@@ -54,13 +54,30 @@
 
   ];
 
+  //get
+
 
   ?>
 
 
   <h1>LISTA DEGLI HOTEL</h1>
 
-  <div class="container">
+  <div class="form">
+
+    <form>
+
+
+      <input type="checkbox" id="park" name="park">
+      <label for="park">Parceggio</label>
+      <input type="submit" value="SEARCH">
+      <br>
+      <br>
+
+    </form>
+  
+  </div>
+
+  <div class="box-hotel">
     <?php
   
     foreach ($hotels as $hotel) {
@@ -76,7 +93,30 @@
 
     ?>
   </div>
+  
+    <?php
+    $parks = [];
+    if(isset($_GET['park'])){
+      echo "<h1>RISULTATI RICERCA PER PARCHEGGIO</h1>";
+      foreach ($hotels as $hotelPark){
+        $park = $hotelPark["parking"];
+        $name = $hotelPark["name"];
+        if ($park === true){
+          echo $name . " | ";
+        }
+        
+      }
+      
+    }
+  
 
+    ?>
+
+  <div>
+
+    
+    
+  </div>
   
 
 
