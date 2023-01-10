@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>HOTEL</title>
 </head>
 
@@ -73,7 +74,7 @@
       </select>
 
       <!-- select per il voto -->
-      <label for="stelle">| Stella/e</label>
+      <label for="stelle">Stella/e</label>
       <select name="stelle" id="stelle">
         <option value=1>1</option>
         <option value=2>2</option>
@@ -91,36 +92,45 @@
   </div>
 
   <div class="box-hotel">
-    <?php
 
-    foreach ($hotels as $hotel) {
-      $name = $hotel["name"];
-      $description = $hotel["description"];
-      $vote = $hotel["vote"];
-      $distance_to_center = $hotel["distance_to_center"];
-      $park = $hotel["parking"];
+    <table>
+      <tr>
+        <th>NOME</th>
+        <th>DISTANZA</th>
+        <th>VOTO</th>
+        <th>DESCRIZIONE</th>
+      </tr>
+      <?php
+      foreach ($hotels as $hotel) {
+        $name = $hotel["name"];
+        $description = $hotel["description"];
+        $vote = $hotel["vote"];
+        $distance_to_center = $hotel["distance_to_center"];
+        $park = $hotel["parking"];
 
-      echo $name . ":" . "<br>";
-      echo $description . " | " . $vote . " | " . $distance_to_center . " | ". $park . "<br><br><br>";
-    }
+        echo "<tr>" . "<td>" . $name . "</td>" . "<td>" . $distance_to_center ." KM" . "</td>" . "<td>" . $vote . "</td>" . "<td>" . $description . "</td>" . "</tr>";
+      }
+      ?>
 
-    ?>
-  </div>
+    </table>
 
-  <?php
- 
-        echo "<h1>RISULTATI RICERCA: </h1>";
-        foreach ($hotels as $hotelPark) {
-          $park = $hotelPark["parking"];
-          $vote = $hotelPark["vote"];
-          $name = $hotelPark["name"];
-          if ($park == $_GET['park'] && $vote >= $_GET['stelle']) {
-            echo $name . "  " . "<br>";
-          }
+    <table>
+      <tr>
+        <th>NOME</th>
+      </tr>
+      <?php
+      echo "<h1>RISULTATI RICERCA: </h1>";
+      foreach ($hotels as $hotelPark) {
+        $park = $hotelPark["parking"];
+        $vote = $hotelPark["vote"];
+        $name = $hotelPark["name"];
+        if ($park == $_GET['park'] && $vote >= $_GET['stelle']) {
+          echo "<tr>" . "<td>" . $name . "</td>" . "</tr>";
         }
-
-  ?>
-
+      }
+      ?>
+    </table>
+  </div>
 </body>
 
 

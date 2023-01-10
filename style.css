@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(229, 224, 224);
+    text-align: center;
+}
+
+
+h1 {
+    margin: 50px;
+}
+
+select,
+input {
+    padding: 10px;
+    border-radius: 7px;
+    border: transparent;
+}
+
+input {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+label{
+    margin-left:20px;
+}
+
+.box-hotel{
+    
+    max-width: 800px;
+    margin: 30px auto;
+    
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
