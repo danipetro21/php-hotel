@@ -66,60 +66,60 @@
 
     <form>
 
+      <!-- filtraggio per parcheggio -->
+      <select name="park" id="park">
+        <option value="1">Parcheggio presente</option>
+        <option value="0">Parcheggio non presente</option>
+      </select>
 
-      <input type="checkbox" id="park" name="park">
-      <label for="park">Parceggio</label>
+      <!-- select per il voto -->
+      <label for="stelle">| Stella/e</label>
+      <select name="stelle" id="stelle">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>
+
       <input type="submit" value="SEARCH">
       <br>
       <br>
 
     </form>
-  
+
   </div>
 
   <div class="box-hotel">
     <?php
-  
+
     foreach ($hotels as $hotel) {
       $name = $hotel["name"];
       $description = $hotel["description"];
       $vote = $hotel["vote"];
       $distance_to_center = $hotel["distance_to_center"];
+      $park = $hotel["parking"];
 
-      
       echo $name . ":" . "<br>";
-      echo $description . " | " . $vote . " | " . $distance_to_center . "<br><br><br>";
+      echo $description . " | " . $vote . " | " . $distance_to_center . " | ". $park . "<br><br><br>";
     }
 
     ?>
   </div>
-  
-    <?php
-    $parks = [];
-    if(isset($_GET['park'])){
-      echo "<h1>RISULTATI RICERCA PER PARCHEGGIO</h1>";
-      foreach ($hotels as $hotelPark){
-        $park = $hotelPark["parking"];
-        $name = $hotelPark["name"];
-        if ($park === true){
-          echo $name . " | ";
+
+  <?php
+ 
+        echo "<h1>RISULTATI RICERCA: </h1>";
+        foreach ($hotels as $hotelPark) {
+          $park = $hotelPark["parking"];
+          $vote = $hotelPark["vote"];
+          $name = $hotelPark["name"];
+          if ($park == $_GET['park'] && $vote >= $_GET['stelle']) {
+            echo $name . "  " . "<br>";
+          }
         }
-        
-      }
-      
-    }
-  
 
-    ?>
-
-  <div>
-
-    
-    
-  </div>
-  
-
-
+  ?>
 
 </body>
 
